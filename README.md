@@ -1,72 +1,75 @@
-CodeDuniya 🇵🇰
+# CodeDuniya 🇵🇰
 
-Coding seekho jaise koi dost tumhein samjha raha ho.
+> **Coding seekho jaise koi dost tumhein samjha raha ho.**
 
-CodeDuniya is a modern learning platform for Pakistani students to learn Python, JavaScript, Web Development, AI & Machine Learning through simple English and Roman Urdu.
+CodeDuniya is a modern learning platform for Pakistani students to learn **Python, JavaScript, Web Development, AI & Machine Learning** through simple English and Roman Urdu.
 
-🌐 Live Demo: https://code-duniya-project.vercel.app/
+🌐 **Live Demo:** https://code-duniya-project.vercel.app/
 
-✨ Features
+## ✨ Features
 
-📚 Structured learning paths and lessons
+- 📚 **Structured Learning** — Learn through organized paths and lessons.
+- 💻 **Code Playground** — Practice and experiment with code.
+- 🤖 **CodeYaar AI** — AI-powered coding and learning assistant.
+- 🎯 **Quizzes & Challenges** — Test your knowledge and improve your skills.
+- 📊 **Progress Dashboard** — Track your learning progress.
+- 🔎 **Lesson Search** — Quickly find the content you need.
+- 🌙 **Dark & Light Mode** — Comfortable learning experience.
+- 📱 **Responsive Design** — Works across desktop, tablet and mobile.
 
-💻 Interactive code playground
+## 🛠️ Tech Stack
 
-🤖 CodeYaar AI study assistant
+- **Next.js 15**
+- **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion**
+- **Vercel AI SDK**
+- **Monaco Editor**
+- **Pyodide**
 
-🎯 Quizzes, coding challenges, XP and badges
+## 🚀 Getting Started
 
-📊 Student progress dashboard
+Clone the repository:
 
-🔎 Lesson search
+```bash
+git clone https://github.com/bahawal-khan/CodeDuniya-Project.git
+cd CodeDuniya-Project
+```
 
-🌙 Dark & light mode
+Install dependencies:
 
-📱 Fully responsive design
-
-🛠️ Tech Stack
-
-Next.js 15
-
-TypeScript
-
-Tailwind CSS
-
-Framer Motion
-
-Vercel AI SDK
-
-Monaco Editor
-
-Pyodide
-
-🚀 Run Locally
-
+```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
+```
 
-Open http://localhost:3000
+Open `http://localhost:3000`
 
-🤖 CodeYaar
+## 🤖 AI Setup
 
-CodeYaar can work with a real AI provider using GROQ_API_KEY.
+To enable CodeYaar AI, add your Groq API key to `.env.local`:
 
-Add it to your .env.local:
-
+```env
 GROQ_API_KEY=your_api_key
+```
 
-Without an API key, CodeYaar can use the built-in local fallback.
+> Never commit your API keys or `.env` files to GitHub.
 
-☁️ Deployment
+## ☁️ Deployment
 
-CodeDuniya is ready to deploy on Vercel.
+CodeDuniya is deployed with **Vercel**.
 
-Push the project to GitHub.
+🌐 **Live:** https://code-duniya-project.vercel.app/
 
-Import the repository into Vercel.
+## 📄 License
 
-Add GROQ_API_KEY if AI features are required.
+This project is created for educational purposes.
 
-Deploy.
+---
 
-Built with ❤️ for Pakistani students.
+**Built with ❤️ for Pakistani students.**
