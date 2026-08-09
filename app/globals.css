@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-cream text-ink dark:bg-night dark:text-cream font-body antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: #f2a93b66;
+}
+
+/* ========== Signature: Hand-painted "phool" scalloped edge ========== */
+.phool-edge {
+  position: relative;
+}
+
+.phool-edge::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  right: 14px;
+  height: 12px;
+  background-image: radial-gradient(circle at 9px 11px, currentColor 5.5px, transparent 6px);
+  background-size: 18px 18px;
+  background-repeat: repeat-x;
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.phool-edge:hover::before {
+  opacity: 0.75;
+}
+
+/* ========== Signature: Dotted "phool patti" divider ========== */
+.patti-divider {
+  height: 12px;
+  background-image: radial-gradient(circle, currentColor 2.8px, transparent 3.2px);
+  background-size: 20px 20px;
+  background-repeat: repeat-x;
+  background-position: center;
+  opacity: 0.35;
+}
+
+.dark .patti-divider {
+  opacity: 0.25;
+}
+
+/* ========== Glow utilities ========== */
+.meter-glow {
+  filter: drop-shadow(0 0 8px rgba(242, 169, 59, 0.5));
+}
+
+.glow-saffron {
+  box-shadow: 0 0 28px -4px rgba(242, 169, 59, 0.4);
+}
+
+.glow-rani {
+  box-shadow: 0 0 28px -4px rgba(214, 51, 108, 0.4);
+}
+
+.glow-teal {
+  box-shadow: 0 0 28px -4px rgba(14, 124, 123, 0.4);
+}
+
+/* ========== Premium card base ========== */
+.card-premium {
+  @apply rounded-2xl border border-ink/5 bg-white/80 shadow-card backdrop-blur-sm
+         transition-all duration-300 ease-out-expo
+         dark:border-cream dark:bg-nightcard/90 dark:shadow-cardDark;
+}
+
+.card-premium:hover {
+  @apply shadow-card-hover dark:shadow-card-hover-dark -translate-y-0.5;
+}
+
+/* ========== Soft gradient backgrounds ========== */
+.bg-hero-light {
+  background: linear-gradient(165deg, #FBF6EC 0%, #FDF8F0 30%, #F6D3E1 70%, #CDECEA 100%);
+}
+
+.dark .bg-hero-light {
+  background: linear-gradient(165deg, #12101C 0%, #1A1628 40%, #221C36 100%);
+}
+
+/* ========== Scrollbar ========== */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #d6336c55;
+  border-radius: 999px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #d6336c88;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #f2a93b44;
+}
+
+/* ========== Typing indicator dots ========== */
+@keyframes bounce-dot {
+  0%, 80%, 100% {
+    transform: scale(0.55);
+    opacity: 0.35;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.typing-dot {
+  animation: bounce-dot 1.25s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* ========== Smooth page content ========== */
+.page-enter {
+  animation: fade-up 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ========== Focus ring ========== */
+*:focus-visible {
+  outline: 2px solid #D6336C;
+  outline-offset: 2px;
+}
+
+.dark *:focus-visible {
+  outline-color: #F2A93B;
+}
+
+/* ========== Better text rendering ========== */
+h1, h2, h3, h4, .font-display {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ========== Reduced motion ==========
+   Framer Motion components read useReducedMotion() themselves (see
+   lib/motion.ts), but these plain CSS animations run outside that system
+   and need their own opt-out. */
+@media (prefers-reduced-motion: reduce) {
+  .phool-edge::before,
+  .patti-divider,
+  .typing-dot,
+  .animate-float-y,
+  .animate-pulse-soft,
+  .animate-swirl-spin,
+  .animate-pop-in,
+  .animate-fade-up,
+  .animate-scale-in,
+  .animate-slide-in-right {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .card-premium,
+  .card-premium:hover {
+    transition: none !important;
+    transform: none !important;
+  }
+}
