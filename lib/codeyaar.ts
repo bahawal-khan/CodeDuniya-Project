@@ -10,8 +10,9 @@ export interface YaarContext {
 const GREETINGS = [
   "Yar kya haal hai? Aaj kya scene hai coding ka? 😄",
   "Wapas aa gaya tu! Bata, kahan se shuru karein aaj?",
-  "Assalam-o-Alaikum bhai/baji! CodeYaar hazir hai, hukum karo.",
 ];
+
+const SALAM_REPLY = "Walaikum Assalam!";
 
 const MOTIVATION = [
   "Dekh, har bada developer kabhi tumhari jagah tha — bas rukna nahi hai. Chal, ek aur step aage!",
@@ -48,19 +49,24 @@ export function getCodeYaarReply(userMessage: string, ctx: YaarContext = {}): st
     return pick(GREETINGS);
   }
 
-  // Greeting detection
-  if (containsAny(msg, ["salam", "assalam", "hi", "hello", "hey", "kya haal"])) {
+  // Salam gets a plain, simple reply — not the full greeting pool.
+  if (containsAny(msg, ["salam", "assalam"])) {
+    return SALAM_REPLY;
+  }
+
+  // Other greetings
+  if (containsAny(msg, ["hi", "hello", "hey", "kya haal"])) {
     return pick(GREETINGS) + (ctx.lessonTitle ? `\n\nWaise tu abhi "${ctx.lessonTitle}" wala lesson kar raha tha — wapas usi pe chalein?` : "");
   }
 
   // Error / stuck detection
   if (containsAny(msg, ["error", "ghalat", "kaam nahi", "nahi chal", "stuck", "atak", "samajh nahi", "confuse"])) {
-    return "Bhai tension na le, yeh bilkul us tarah hai jaise koi lock bina key ke kholne ki koshish kar raha ho — kuch to missing hai. 🔑 Mujhe yeh batao:\n\n1. Exact error message kya aa raha hai?\n2. Konsi line par aa raha hai?\n\nCopy-paste kar de, main dekh kar batata hoon kya masla hai. 90% chance hai koi chhoti si spelling ya bracket ki galti hogi — sab ke sath hoti hai, koi shame ki baat nahi!";
+    return "Tension na le, sab ke sath hota hai. Exact error message aur jis line par aa raha hai, copy-paste kar de — main dekh kar batata hoon kya masla hai. 🔑";
   }
 
   // Motivation / feeling down
   if (containsAny(msg, ["mushkil", "difficult", "hard", "give up", "chhod", "bore", "mann nahi", "demotivate", "tired", "thak"])) {
-    return "Yar sun — " + pick(MOTIVATION) + "\n\nAgar chahe to hum is concept ko chhota kar ke, ek desi example ke sath dobara samjhte hain. Bata?";
+    return "Yar sun — " + pick(MOTIVATION);
   }
 
   // Streak related
@@ -109,7 +115,7 @@ export function getCodeYaarReply(userMessage: string, ctx: YaarContext = {}): st
     return "Koi baat nahi yar, isi liye to hoon! Jab bhi atko, seedha yahan aa jana. Chal ab jaake practice kar! 💪";
   }
   if (containsAny(msg, ["bye", "khuda hafiz", "allah hafiz", "chalta hoon"])) {
-    return "Theek hai bhai/baji, apna khayal rakhna. Kal wapas aana — streak yaad rakhna! Allah Hafiz 👋";
+    return "Theek hai yar, apna khayal rakhna. Kal wapas aana — streak yaad rakhna! Allah Hafiz 👋";
   }
 
   // Default friendly fallback, still in-persona
@@ -117,7 +123,7 @@ export function getCodeYaarReply(userMessage: string, ctx: YaarContext = {}): st
     ? `Waise tum abhi "${ctx.lessonTitle}" wale lesson par ho — usi ke baare mein poochna chahte ho?`
     : "Kisi bhi lesson, error, ya concept ke baare mein pooch sakte ho.";
 
-  return `Hmm samajh gaya. ${lessonNote} Agar zyada clear kar do ke exactly kya masla hai (concept samajhna hai, error fix karna hai, ya bas motivation chahiye), to main aur behtar madad kar sakta hoon! 😄`;
+  return `Hmm samajh gaya. ${lessonNote} 😄`;
 }
 
 export const codeYaarStarters = [
